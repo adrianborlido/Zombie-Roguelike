@@ -3,12 +3,13 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Enemy
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - BlockingLayer
   - Water
   - UI
   - 
@@ -40,4 +41,13 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Units
+    uniqueID: 1364612073
+    locked: 0
+  - name: Floor
+    uniqueID: 1448846759
+    locked: 0
+  - name: Items
+    uniqueID: 193706181
     locked: 0
