@@ -240,7 +240,7 @@ Rigidbody2D:
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1
-  m_LinearDrag: 0
+  m_LinearDrag: 8
   m_AngularDrag: 0.05
   m_GravityScale: 0
   m_Material: {fileID: 0}
@@ -350,6 +350,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 557028115}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: db8e19f8b241bae43b28e06ea0af49d7, type: 3}
+  m_Script: {fileID: 11500000, guid: 6457f9a06fea1fe469f6b13be5837ba3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _Speed: 4
+  _Camera: {fileID: 519420031}
