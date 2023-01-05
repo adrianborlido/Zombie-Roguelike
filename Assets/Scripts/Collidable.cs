@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Collidable: MonoBehaviour {
@@ -15,9 +13,9 @@ public class Collidable: MonoBehaviour {
     protected virtual void Update() {
         boxCollider.OverlapCollider(filter, hits);
         for(int i = 0; i < hits.Length; i++) {
-            if(hits[i] == null) {
+            if(hits[i] == null)
                 continue;
-            }
+
             OnCollide(hits[i]);
             hits[i] = null;
         }

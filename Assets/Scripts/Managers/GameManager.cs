@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -24,9 +23,15 @@ public class GameManager: MonoBehaviour {
 
     // References
     public Player player;
+    public FloatingTextManager floatingTextManager;
     // public Weapon weapon etc.
 
     public int money;
+
+    // Floating text
+    public void ShowText(string message, int fontSize, Color color, Vector3 position, Vector3 motion, float duration) {
+        floatingTextManager.Show(message, fontSize, color, position, motion, duration);
+    }
 
     // Save state
     /*
@@ -40,11 +45,9 @@ public class GameManager: MonoBehaviour {
 
         PlayerPrefs.SetString("SaveState", saving);
     }
-
     public void LoadState(Scene s, LoadSceneMode mode) {
-        if(!PlayerPrefs.HasKey("SaveState")) {
+        if(!PlayerPrefs.HasKey("SaveState"))
             return;
-        }
 
         string[] data = PlayerPrefs.GetString("SaveState").Split('|');
         money = int.Parse(data[1]);

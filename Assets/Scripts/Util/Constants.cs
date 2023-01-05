@@ -1,7 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
  static class Constants {
     // TAGS
     public const string TAG_PLAYER = "Player";
