@@ -15,8 +15,8 @@ public class Player: MonoBehaviour {
     }
 
     private void FixedUpdate() {
-        float x = Input.GetAxisRaw("Horizontal");
-        float y = Input.GetAxisRaw("Vertical");
+        float x = Input.GetAxisRaw(Constants.AXIS_HORIZONTAL);
+        float y = Input.GetAxisRaw(Constants.AXIS_VERTICAL);
         moveDelta = new Vector2(x, y);
 
         if(moveDelta.x > 0) {
@@ -25,26 +25,24 @@ public class Player: MonoBehaviour {
             transform.localScale = new Vector3(-1, 1, 1);
         }
 
-        hit = Physics2D.BoxCast(
-            transform.position,
-            boxCollider.size,
-            0,
-            new Vector2(0, moveDelta.y),
-            Mathf.Abs(moveDelta.y * moveSpeed * Time.deltaTime),
-            LayerMask.GetMask("Unit", "BlockingLayer"));
+        hit = GetRaycastHit(0, moveDelta.y, moveDelta.y);
         if(hit.collider == null) {
             transform.Translate(0, moveDelta.y * moveSpeed * Time.deltaTime, 0);
         }
 
-        hit = Physics2D.BoxCast(
-            transform.position,
-            boxCollider.size,
-            0,
-            new Vector2(moveDelta.x, 0),
-            Mathf.Abs(moveDelta.x * moveSpeed * Time.deltaTime),
-            LayerMask.GetMask("Unit", "BlockingLayer"));
+        hit = GetRaycastHit(moveDelta.x, 0, moveDelta.x);
         if(hit.collider == null) {
             transform.Translate(moveDelta.x * moveSpeed * Time.deltaTime, 0, 0);
         }
+    }
+
+    private RaycastHit2D GetRaycastHit(float vector2X, float vector2Y, float moveDelta) {
+        return Physics2D.BoxCast(
+                    transform.position,
+                    boxCollider.size,
+                    0,
+                    new Vector2(vector2X, vector2Y),
+                    Mathf.Abs(moveDelta * moveSpeed * Time.deltaTime),
+                    LayerMask.GetMask(Constants.LAYER_UNIT, Constants.LAYER_BLOCKING));
     }
 }
